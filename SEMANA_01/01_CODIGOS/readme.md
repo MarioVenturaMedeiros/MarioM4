@@ -4,7 +4,6 @@ void setup() {
   pinMode(10, OUTPUT);
 }
 
-// the loop function runs over and over again forever
 void loop() {
   digitalWrite(10, HIGH); 
   delay(250);                     
