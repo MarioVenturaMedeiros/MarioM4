@@ -1,3 +1,5 @@
+//Código atividade aula:
+
 void setup() {
   pinMode(10, OUTPUT);
 }
