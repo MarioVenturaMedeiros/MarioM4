@@ -1,9 +1,9 @@
 //código do exercício aqui:
 
-int botoes[5] = {16, 19, 22, 25};
-int leds[4] = {17, 20, 23, 26};
+int botoes[5] = {16, 18, 22, 25};
+int leds[4] = {17, 19, 23, 26};
 
-int reset = 28;
+int reset = 27;
 
 int estado = 0;
 int level = 1;
@@ -24,7 +24,7 @@ void setup() {
 }
 
 void loop() {
-  if (digitalRead(reset) == HIGH) {
+  if (digitalRead(reset) == LOW) {
     estado = 0;
     level = 1;
     verifica = 0;
@@ -32,7 +32,6 @@ void loop() {
 
   switch(estado) {
     case 0:
-      init();
       gerarSequencia();
       estado++;
       break;
@@ -43,27 +42,6 @@ void loop() {
     case 2:
       verificarSequencia();
       break;
-  }
-}
-
-void init() {
-  for (int j = 0; j<4; j++){
-    for(int i = 0; i<4; i++) {
-      digitalWrite(leds[i], HIGH);
-      delay(100);
-      digitalWrite(leds[i], LOW);
-      delay(100);
-    }
-  }
-  for (int j = 0; j<2; j++){
-    for(int i = 0; i<4; i++) {
-      digitalWrite(leds[i], HIGH);
-    }
-    delay(200);
-    for(int i = 0; i<4; i++) {
-      digitalWrite(leds[i], LOW);
-    }
-    delay(200);
   }
 }
 
@@ -86,7 +64,7 @@ void mostrarSequencia() {
 
 void verificarSequencia() {
   for(int i = 0; i<4; i++) {
-    if (digitalRead(botoes[i]) == HIGH) {
+    if (digitalRead(botoes[i]) == LOW) {
       digitalWrite(leds[i], HIGH);
       if (leds[i] == leds[*ptr]) {
         delay(500);
