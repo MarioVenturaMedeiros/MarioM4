@@ -20,7 +20,6 @@ void setup() {
   }
 
   pinMode(reset, INPUT_PULLUP);
-
   randomSeed(analogRead(0));
 }
 
@@ -37,12 +36,10 @@ void loop() {
       gerarSequencia();
       estado++;
       break;
-
     case 1:
       mostrarSequencia();
       estado++;
       break;
-    
     case 2:
       verificarSequencia();
       break;
@@ -91,21 +88,18 @@ void verificarSequencia() {
   for(int i = 0; i<4; i++) {
     if (digitalRead(botoes[i]) == HIGH) {
       digitalWrite(leds[i], HIGH);
-
       if (leds[i] == leds[*ptr]) {
         delay(500);
         digitalWrite(leds[i], LOW);
         delay(500);
         ptr++;
         verifica++;
-
         if (verifica == level) {
           level++;
           estado = 1;
           verifica = 0;
           ptr = &sequencia[0];
         }
-
       } else {
         delay(500);
         digitalWrite(leds[i], LOW);
